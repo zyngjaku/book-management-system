@@ -83,6 +83,31 @@ public class DB {
         return false;
     }
 
+    public boolean checkIfEmailNotExistAndCreateUser(String mail, String password) {
+        try {
+            openConnection();
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT mail FROM Users WHERE mail='" + mail + "'");
+
+            if(rs.next())
+                return false;
+
+            Sha1 sha1 = new Sha1();
+            String passwordEncoded = sha1.encode(password);
+
+            stmt = conn.createStatement();
+            stmt.executeUpdate("INSERT INTO Users (mail, password) VALUES('" + mail + "', '" + passwordEncoded + "');");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+
+        return true;
+    }
+
     public void openConnection(){
         if(conn==null) {
             try {

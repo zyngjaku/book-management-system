@@ -2,41 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_8_0_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/system/management/book/layouts/login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/system/management/book/layouts/main.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/system/management/book/layouts/top10.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/system/management/book/services/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/system/management/book/services/Sha1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/system/management/book/services/TableTop10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_validator_commons_validator_1_6.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book-management-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/book-management-system.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/AuthorsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/BooksController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/LogInController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/MainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/SignUpController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/Top10Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/authors.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/books.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/main.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/signup.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/sample/top10.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/AuthorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/controllers/AuthorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/controllers/BooksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/controllers/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/controllers/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Top10Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/controllers/Top10Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/authors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/layouts/authors.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/books.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/layouts/books.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/main.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/layouts/signup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/top10.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/system/management/book/controllers/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/book-management-system/system/management/book/controllers/SignUpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/book-management-system/system/management/book/layouts/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/book-management-system/system/management/book/layouts/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/management/book/controllers/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/controllers/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/management/book/layouts/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/layouts/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/management/book/services/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/management/book/services/DB.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/system/management/book/services/DB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="65" column="72" lean-forward="true" selection-start-line="65" selection-start-column="72" selection-end-line="65" selection-end-column="72" />
+            <state relative-caret-position="402">
+              <caret line="85" column="52" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,20 +86,42 @@
         <entry file="file://$PROJECT_DIR$/src/system/management/book/layouts/login.fxml">
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="680">
               <caret line="40" column="43" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/system/management/book/controllers/LogInController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+            <state relative-caret-position="578">
+              <caret line="46" column="5" selection-start-line="18" selection-start-column="4" selection-end-line="46" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/system/management/book/controllers/SignUpController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-449">
+              <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/system/management/book/layouts/signup.fxml">
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="294" selection-start-line="11" selection-start-column="294" selection-end-line="11" selection-end-column="294" />
             </state>
           </provider>
         </entry>
@@ -170,21 +165,22 @@
         <option value="$PROJECT_DIR$/src/sample/TableTop10.java" />
         <option value="$PROJECT_DIR$/src/sample/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/system/management/book/controllers/MainController.java" />
-        <option value="$PROJECT_DIR$/src/system/management/book/layouts/signup.fxml" />
         <option value="$PROJECT_DIR$/src/system/management/book/services/ConnectionToDatabase.java" />
         <option value="$PROJECT_DIR$/src/system/management/book/services/TableTop10.java" />
         <option value="$PROJECT_DIR$/src/system/management/book/Main.java" />
         <option value="$PROJECT_DIR$/src/system/management/book/layouts/top10.fxml" />
         <option value="$PROJECT_DIR$/src/system/management/book/controllers/Top10Controller.java" />
         <option value="$PROJECT_DIR$/src/system/management/book/services/Sha1.java" />
-        <option value="$PROJECT_DIR$/src/system/management/book/services/DB.java" />
         <option value="$PROJECT_DIR$/src/system/management/book/layouts/login.fxml" />
         <option value="$PROJECT_DIR$/src/system/management/book/controllers/LogInController.java" />
+        <option value="$PROJECT_DIR$/src/system/management/book/services/DB.java" />
+        <option value="$PROJECT_DIR$/src/system/management/book/layouts/signup.fxml" />
+        <option value="$PROJECT_DIR$/src/system/management/book/controllers/SignUpController.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="538" />
     <option name="width" value="1386" />
     <option name="height" value="788" />
@@ -200,8 +196,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,6 +239,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -383,11 +379,13 @@
       <workItem from="1570279363002" duration="932000" />
       <workItem from="1570281460920" duration="9313000" />
       <workItem from="1570292290527" duration="3498000" />
+      <workItem from="1570299582469" duration="2436000" />
+      <workItem from="1570349158056" duration="2127000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28915000" />
+    <option name="totallyTimeSpent" value="33478000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -400,8 +398,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19402985" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19829424" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -410,7 +409,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -466,13 +465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/system/management/book/controllers/SignUpController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/system/management/book/layouts/books.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
@@ -494,14 +486,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/system/management/book/layouts/signup.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="94" column="7" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -563,25 +547,43 @@
     <entry file="file://$PROJECT_DIR$/src/system/management/book/layouts/login.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="680">
           <caret line="40" column="43" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/system/management/book/services/DB.java">
+    <entry file="file://$PROJECT_DIR$/src/system/management/book/controllers/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="65" column="72" lean-forward="true" selection-start-line="65" selection-start-column="72" selection-end-line="65" selection-end-column="72" />
+        <state relative-caret-position="578">
+          <caret line="46" column="5" selection-start-line="18" selection-start-column="4" selection-end-line="46" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/system/management/book/controllers/LogInController.java">
+    <entry file="file://$PROJECT_DIR$/src/system/management/book/services/DB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+        <state relative-caret-position="402">
+          <caret line="85" column="52" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/system/management/book/layouts/signup.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="294" selection-start-line="11" selection-start-column="294" selection-end-line="11" selection-end-column="294" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/system/management/book/controllers/SignUpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-449">
+          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -653,7 +655,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>mysql:mysql-connector-java:8.0.17</last-edited>
+          <last-edited>commons-validator:commons-validator:1.6</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
