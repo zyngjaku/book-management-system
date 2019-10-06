@@ -4,11 +4,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.BorderPane;
 import system.management.book.services.DB;
 import system.management.book.services.Book;
 
@@ -47,18 +51,31 @@ public class Top10Controller implements Initializable {
                 Object val = tablePosition.getTableColumn().getCellData(newValue);
 
 
+
+
                 TablePosition pos = (TablePosition) top10Table.getSelectionModel().getSelectedCells().get(0);
                 TableColumn col = pos.getTableColumn();
 
                 String data = (String) col.getCellObservableValue(1).getValue();
 
-                //top10Table.getColumns().get(0).getCellObservableValue(newValue).getValue();
-
-                System.out.println(">> " + data);
             }
         });
+
+        tableViewManager();
     }
 
+    private void tableViewManager() {
+        top10Table.setRowFactory(observable -> {
+            TableRow<Book> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton()== MouseButton.PRIMARY && event.getClickCount() == 2) {
+                    Book clickedRow = row.getItem();
+                    
+                    System.out.println(clickedRow.getTitle());
+                }
+            });
 
-
+            return row ;
+        });
+    }
 }
