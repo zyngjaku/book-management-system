@@ -56,7 +56,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void onMouseClickedAuthors(MouseEvent event) {
-        setGUI("authors");
+        setGUI("book_view"); //TODO: Change to authors
         setButtonColor(authors);
     }
 

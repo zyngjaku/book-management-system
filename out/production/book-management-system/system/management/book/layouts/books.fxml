@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="400.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.management.book.controllers.BooksController">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.management.book.controllers.BooksController">
    <children>
-      <Label text="books" />
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Type your favorite title or author">
+               <HBox.margin>
+                  <Insets bottom="6.0" left="10.0" top="6.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="searchTextField">
+               <HBox.margin>
+                  <Insets bottom="6.0" left="3.0" top="6.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedSearch" style="-fx-background-color: #B1D347; -fx-background-radius: 0;" text="Search">
+               <HBox.margin>
+                  <Insets bottom="6.0" left="3.0" top="6.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <TableView fx:id="bookTable" prefHeight="400.0" prefWidth="800.0">
+         <columns>
+            <TableColumn fx:id="lpColumn" prefWidth="25.0" style="-fx-alignment: CENTER;" text="Lp." />
+            <TableColumn fx:id="titleColumn" prefWidth="359.0" text="Title" />
+            <TableColumn fx:id="authorColumn" prefWidth="310.0" text="Author" />
+            <TableColumn fx:id="releaseColumn" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Release" />
+         </columns>
+      </TableView>
    </children>
-</GridPane>
+</VBox>

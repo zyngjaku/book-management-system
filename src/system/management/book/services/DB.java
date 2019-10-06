@@ -36,8 +36,8 @@ public class DB {
         return bookAuthorsStringBuilder.toString();
     }
 
-    public LinkedList<TableTop10> getTop10Books() {
-        LinkedList<TableTop10> listTop10Books = new LinkedList<>();
+    public LinkedList<Book> getTop10Books() {
+        LinkedList<Book> listTop10Books = new LinkedList<>();
 
         try {
             openConnection();
@@ -50,7 +50,7 @@ public class DB {
                 String title = rs.getString(2);
                 double rate = Math.round(rs.getDouble(3) * 100.0) / 100.0;
                 String author = getBookAuthors(rs.getInt(1));
-                listTop10Books.add(new TableTop10(lp, title, author, rate));
+                listTop10Books.add(new Book(lp, title, author, rate));
 
                 lp++;
             }
@@ -108,7 +108,61 @@ public class DB {
         return true;
     }
 
-    public void openConnection(){
+    public LinkedList<Book> getAllBooks() {
+        LinkedList<Book> listBooks = new LinkedList<>();
+
+        try {
+            openConnection();
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT id_book, title, release_year FROM Books;");
+
+            int lp=1;
+            while(rs.next()) {
+                String title = rs.getString(2);
+                String author = getBookAuthors(rs.getInt(1));
+                Date release = rs.getDate(3);
+                listBooks.add(new Book(lp, title, author, release));
+
+                lp++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+
+        return listBooks;
+    }
+
+    public LinkedList<Book> getSearchedBooks(String phrase) {
+        LinkedList<Book> listSearchedBooks = new LinkedList<>();
+
+        try {
+            openConnection();
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT b.id_book, b.title, b.release_year FROM Books AS b JOIN Book_authors AS ba ON b.id_book = ba.id_book JOIN Authors AS a ON ba.id_author = a.id_author WHERE b.title LIKE '%" + phrase + "%' OR a.name LIKE '%" + phrase + "%' OR a.surname LIKE '%" + phrase + "%' GROUP BY b.id_book;");
+
+            int lp=1;
+            while(rs.next()) {
+                String title = rs.getString(2);
+                String author = getBookAuthors(rs.getInt(1));
+                Date release = rs.getDate(3);
+                listSearchedBooks.add(new Book(lp, title, author, release));
+
+                lp++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+
+        return listSearchedBooks;
+    }
+
+    private void openConnection(){
         if(conn==null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -124,7 +178,7 @@ public class DB {
         }
     }
 
-    public void closeConnection() {
+    private void closeConnection() {
         try {
             conn.close();
         } catch (SQLException e) {

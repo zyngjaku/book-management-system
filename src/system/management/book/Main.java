@@ -10,12 +10,14 @@ import system.management.book.services.DB;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage stage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("layouts/main.fxml"));
 
-        primaryStage.setTitle("Book Management System");
-        primaryStage.setScene(new Scene(root, 800, 400));
-        primaryStage.show();
+        //stage.setResizable(false);
+
+        stage.setTitle("Book Management System");
+        stage.setScene(new Scene(root, 800, 400));
+        stage.show();
     }
 
 
