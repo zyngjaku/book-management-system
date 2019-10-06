@@ -35,6 +35,7 @@ public class Top10Controller implements Initializable {
         DB db = new DB();
         LinkedList<Book> listTop10Books = db.getTop10Books();
 
+
         for(Book book:listTop10Books) {
             top10Table.getItems().add(book);
         }
