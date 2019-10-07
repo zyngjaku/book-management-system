@@ -14,7 +14,6 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("layouts/main.fxml"));
 
         //stage.setResizable(false);
-
         stage.setTitle("Book Management System");
         stage.setScene(new Scene(root, 800, 400));
         stage.show();

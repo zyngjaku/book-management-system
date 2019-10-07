@@ -15,6 +15,8 @@ import java.util.ResourceBundle;
 
 public class BookViewController implements Initializable {
 
+    private Book book;
+
     @FXML
     Label titleLabel, authorLabel, descriptionLabel;
 
@@ -27,11 +29,20 @@ public class BookViewController implements Initializable {
     @FXML
     ListView commentsListView;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for(int i=1;i<=5;i++) {
             rateChoiceBox.getItems().add(i);
         }
+
+        titleLabel.setText("T");
+    }
+
+    public void func(Book book) {
+        this.book = book;
+
+        titleLabel.setText(this.book.getTitle());
     }
 
     @FXML
@@ -50,6 +61,5 @@ public class BookViewController implements Initializable {
             errorLabel.setText("Login or password is incorrect");
         }*/
     }
-
 
 }

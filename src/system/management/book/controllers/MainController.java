@@ -60,7 +60,7 @@ public class MainController implements Initializable {
         setButtonColor(authors);
     }
 
-    public void setGUI(String name) {
+    private void setGUI(String name) {
         Parent root = null;
 
         try {

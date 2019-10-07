@@ -10,25 +10,25 @@ public class Book {
     double rate;
     Date release;
 
-    Book(int lp, String title, String author){
+    public Book(int lp, String title, String author){
         this.lp=lp;
         this.title=title;
         this.author=author;
     }
 
-    Book(int lp, String title, String author, double rate){
+    public Book(int lp, String title, String author, double rate){
         this(lp, title, author);
 
         this.rate=rate;
     }
 
-    Book(int lp, String title, String author, Date release){
+    public Book(int lp, String title, String author, Date release){
         this(lp, title, author);
 
         this.release=release;
     }
 
-    Book(int lp, String title, String author, String description, Date release){
+    public Book(int lp, String title, String author, String description, Date release){
         this(lp, title, author, release);
 
         this.description=description;
