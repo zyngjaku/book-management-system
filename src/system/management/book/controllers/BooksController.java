@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import system.management.book.services.Book;
 import system.management.book.services.DB;
 
@@ -14,6 +15,8 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class BooksController implements Initializable {
+
+    private BorderPane borderPane;
 
     @FXML
     TextField searchTextField;
@@ -52,6 +55,10 @@ public class BooksController implements Initializable {
         for(Book book:listSearchedBooks) {
             bookTable.getItems().add(book);
         }
+    }
+
+    protected void initVariables(BorderPane borderPane) {
+        this.borderPane = borderPane;
     }
 
 }

@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
@@ -26,6 +27,8 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class Top10Controller implements Initializable {
+
+    private BorderPane borderPane;
 
     @FXML
     private TableView top10Table;
@@ -42,10 +45,8 @@ public class Top10Controller implements Initializable {
         authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         rateColumn.setCellValueFactory(new PropertyValueFactory<>("rate"));
 
-        //DB db = new DB();
-        //LinkedList<Book> listTop10Books = db.getTop10Books();
-        listTop10Books = new LinkedList<>();
-        listTop10Books.add(new Book(1, "O Pegulce", "AJ", "Ciekawy opis o super ksiazce która opisuje super psa", new Date(2019-10-01)));
+        DB db = new DB();
+        LinkedList<Book> listTop10Books = db.getTop10Books();
 
         for(Book book:listTop10Books) {
             top10Table.getItems().add(book);
@@ -59,10 +60,9 @@ public class Top10Controller implements Initializable {
             TableRow<Book> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton()== MouseButton.PRIMARY && event.getClickCount() == 2) {
-                    Book clickedRow = row.getItem();
+                    Book clickedBook = row.getItem();
 
-                    System.out.println(clickedRow.getTitle());
-                    showBookView(listTop10Books.get(0));
+                    showBookView(clickedBook);
                 }
             });
 
@@ -70,21 +70,19 @@ public class Top10Controller implements Initializable {
         });
     }
 
+    protected void initVariables(BorderPane borderPane) {
+        this.borderPane = borderPane;
+    }
+
     private void showBookView(Book book) {
         try {
-            Stage stage = new Stage();
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/book_view.fxml"));
             Parent root = (Parent) loader.load();
 
             BookViewController controller = loader.getController();
-            controller.func(book);
+            controller.initVariable(book);
 
-            Scene scene = new Scene(root, 800, 400);
-
-            stage.setScene(scene);
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.showAndWait();
+            borderPane.setBottom(root);
         } catch (IOException e) {
             e.printStackTrace();
         }

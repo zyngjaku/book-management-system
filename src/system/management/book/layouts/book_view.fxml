@@ -22,7 +22,7 @@
                <children>
                   <HBox prefHeight="70.0" prefWidth="300.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="500.0">
+                        <VBox prefHeight="75.0" prefWidth="600.0">
                            <children>
                               <Label fx:id="titleLabel" text="Title">
                                  <VBox.margin>
@@ -34,7 +34,7 @@
                               </Label>
                               <Label fx:id="authorLabel" text="authors">
                                  <VBox.margin>
-                                    <Insets top="5.0" />
+                                    <Insets top="1.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font size="14.0" />
@@ -46,7 +46,7 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                    <VBox prefHeight="75.0" prefWidth="60.0">
                                        <children>
                                           <Label text="Pages: ">
                                              <VBox.margin>
@@ -56,7 +56,7 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label text="Publisher:">
+                                          <Label text="Genres:">
                                              <VBox.margin>
                                                 <Insets top="5.0" />
                                              </VBox.margin>
@@ -74,21 +74,21 @@
                                           </Label>
                                        </children>
                                     </VBox>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                    <VBox prefHeight="75.0" prefWidth="166.0">
                                        <children>
                                           <Label fx:id="pageLabel" text="page">
                                              <VBox.margin>
-                                                <Insets top="5.0" />
+                                                <Insets top="7.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label fx:id="publishLabel" text="publish">
+                                          <Label fx:id="genresLabel" text="genres">
                                              <VBox.margin>
-                                                <Insets top="5.0" />
+                                                <Insets top="8.0" />
                                              </VBox.margin>
                                           </Label>
                                           <Label fx:id="rateLabel" text="rate">
                                              <VBox.margin>
-                                                <Insets top="5.0" />
+                                                <Insets top="8.0" />
                                              </VBox.margin>
                                           </Label>
                                        </children>
@@ -98,7 +98,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="40.0" prefWidth="100.0">
+                  <HBox maxHeight="200.0" maxWidth="760.0" prefWidth="717.0">
                      <children>
                         <Label text="Description: ">
                            <font>
@@ -108,14 +108,14 @@
                               <Insets right="17.0" top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="descriptionLabel" text="Kubus Puchatek i jego przygody">
+                        <Label fx:id="descriptionLabel" alignment="TOP_LEFT" maxWidth="660.0" text="Kubus Puchatek i jego przygody" textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
                            <HBox.margin>
                               <Insets top="7.0" />
                            </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox maxWidth="765.0" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Label text="Comments: ">
                            <VBox.margin>

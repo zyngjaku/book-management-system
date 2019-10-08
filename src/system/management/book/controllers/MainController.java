@@ -1,5 +1,6 @@
 package system.management.book.controllers;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -61,15 +62,29 @@ public class MainController implements Initializable {
     }
 
     private void setGUI(String name) {
-        Parent root = null;
-
         try {
-            root = FXMLLoader.load(getClass().getResource("../layouts/" + name + ".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/" + name + ".fxml"));
+            Parent root = (Parent) loader.load();
+
+            switch(name) {
+                case "top10":
+                    Top10Controller top10Controller = loader.getController();
+                    top10Controller.initVariables(borderPane);
+                    break;
+                case "books":
+                    BooksController booksController = loader.getController();
+                    booksController.initVariables(borderPane);
+                    break;
+                case "authors":
+                    AuthorsController authorsController = loader.getController();
+                    authorsController.initVariables(borderPane);
+                    break;
+            }
+
+            borderPane.setBottom(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        borderPane.setBottom(root);
     }
 
     private void setButtonColor(Button newClickedButton) {

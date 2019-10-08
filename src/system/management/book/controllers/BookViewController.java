@@ -18,7 +18,7 @@ public class BookViewController implements Initializable {
     private Book book;
 
     @FXML
-    Label titleLabel, authorLabel, descriptionLabel;
+    Label titleLabel, authorLabel, descriptionLabel, pageLabel, genresLabel, rateLabel;
 
     @FXML
     TextArea commentTextArea;
@@ -39,10 +39,16 @@ public class BookViewController implements Initializable {
         titleLabel.setText("T");
     }
 
-    public void func(Book book) {
+    public void initVariable(Book book) {
         this.book = book;
 
         titleLabel.setText(this.book.getTitle());
+        authorLabel.setText(this.book.getAuthor());
+        descriptionLabel.setText(this.book.getDescription());
+
+        pageLabel.setText(String.valueOf(this.book.getPages()));
+        genresLabel.setText(String.valueOf(this.book.getGenres()));
+        rateLabel.setText(String.valueOf(this.book.getRate()));
     }
 
     @FXML

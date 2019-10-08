@@ -36,6 +36,27 @@ public class DB {
         return bookAuthorsStringBuilder.toString();
     }
 
+    public String getBookGenres(int id_book) {
+        StringBuilder bookGenresStringBuilder = new StringBuilder();
+
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT g.genre FROM Book_genres AS bg JOIN Genres AS g ON bg.id_genre=g.id_genre WHERE bg.id_book=" + id_book + ";");
+
+            while(rs.next()) {
+                bookGenresStringBuilder.append(rs.getString(1));
+
+                if(!rs.isLast()) {
+                    bookGenresStringBuilder.append(", ");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return bookGenresStringBuilder.toString();
+    }
+
     public LinkedList<Book> getTop10Books() {
         LinkedList<Book> listTop10Books = new LinkedList<>();
 
@@ -43,14 +64,19 @@ public class DB {
             openConnection();
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT c.id_book, b.title, AVG(c.rate) AS 'average' FROM Comments AS c JOIN Books AS b ON c.id_book=b.id_book GROUP BY c.id_book ORDER BY average DESC LIMIT 10;");
+            ResultSet rs = stmt.executeQuery("SELECT c.id_book, b.title, AVG(c.rate) AS 'average', b.description, b.release_year, b.pages FROM Comments AS c JOIN Books AS b ON c.id_book=b.id_book GROUP BY c.id_book ORDER BY average DESC LIMIT 10;");
 
             int lp=1;
             while(rs.next()) {
                 String title = rs.getString(2);
                 double rate = Math.round(rs.getDouble(3) * 100.0) / 100.0;
                 String author = getBookAuthors(rs.getInt(1));
-                listTop10Books.add(new Book(lp, title, author, rate));
+                String description = rs.getString(4);
+                Date release_year = rs.getDate(5);
+                int pages = rs.getInt(6);
+                String genres = getBookGenres(rs.getInt(1));
+
+                listTop10Books.add(new Book(lp, title, author, rate, description, release_year, pages, genres));
 
                 lp++;
             }
