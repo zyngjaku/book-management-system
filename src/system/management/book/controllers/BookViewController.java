@@ -1,12 +1,15 @@
 package system.management.book.controllers;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import system.management.book.services.Book;
+import system.management.book.services.Comment;
+import system.management.book.services.CustomBookListView;
 import system.management.book.services.DB;
 
 import java.net.URL;
@@ -47,6 +50,15 @@ public class BookViewController implements Initializable {
         pageLabel.setText(String.valueOf(this.book.getPages()));
         genresLabel.setText(String.valueOf(this.book.getGenres()));
         rateLabel.setText(String.valueOf(this.book.getRate()));
+
+        DB db = new DB();
+        LinkedList<Comment> lista = db.getCommentsForSpecificBook(1);
+
+        for(Comment c : lista)
+            commentsListView.getItems().add(c);
+
+        commentsListView.setCellFactory(commentsListView -> new CustomBookListView());
+
     }
 
     @FXML

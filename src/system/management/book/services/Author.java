@@ -9,6 +9,7 @@ public class Author {
     private Date birthday;
     private LinkedList<Book> listOfBooks;
     private int numberOfBooks;
+    private double avgRate;
 
     public Author(int lp, String name, Date birthday) {
         this.lp = lp;
@@ -21,6 +22,14 @@ public class Author {
 
         this.listOfBooks = listOfBooks;
         this.numberOfBooks = listOfBooks.size();
+
+        double sumRate=0;
+
+        for(Book book : listOfBooks) {
+            sumRate+=book.getRate();
+        }
+
+        avgRate = sumRate/listOfBooks.size();
     }
 
     public void addBook(Book book) {
@@ -43,7 +52,11 @@ public class Author {
         return listOfBooks;
     }
 
-    public int getNumberOfBooks() {
-        return numberOfBooks;
+    public String getNumberOfBooks() {
+        return Integer.toString(numberOfBooks);
+    }
+
+    public double getAvgRate() {
+        return avgRate;
     }
 }

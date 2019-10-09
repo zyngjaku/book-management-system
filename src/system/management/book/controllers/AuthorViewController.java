@@ -1,6 +1,5 @@
 package system.management.book.controllers;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,8 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import system.management.book.services.Author;
 import system.management.book.services.Book;
 import system.management.book.services.DB;
 
@@ -18,52 +17,46 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-public class BooksController implements Initializable {
+public class AuthorViewController implements Initializable {
 
     private BorderPane borderPane;
+    private Author author;
 
     @FXML
-    TextField searchTextField;
+    Label authorLabel, dateOfBirthLabel, numberOfBooksLabel, averageRateLabel, numberOfCommentsLabel;
 
     @FXML
-    private TableView bookTable;
+    TableView tableAuthorView;
 
     @FXML
-    private TableColumn titleColumn, authorColumn, releaseColumn;
-
+    TableColumn titleColumn, rateColumn, releaseColumn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         releaseColumn.setCellValueFactory(new PropertyValueFactory<>("release"));
-
-        DB db = new DB();
-        LinkedList<Book> listBooks = db.getAllBooks();
-
-        for(Book book:listBooks) {
-            bookTable.getItems().add(book);
-        }
+        rateColumn.setCellValueFactory(new PropertyValueFactory<>("rate"));
 
         tableViewManager();
     }
 
-    @FXML
-    private void onMouseClickedSearch(MouseEvent event) {
-        bookTable.getItems().clear();
+    protected void initVariable(BorderPane borderPane, Author author) {
+        this.borderPane = borderPane;
+        this.author = author;
 
-        String phrase = searchTextField.getText();
-
-        DB db = new DB();
-        LinkedList<Book> listSearchedBooks = db.getSearchedBooks(phrase);
-
-        for(Book book:listSearchedBooks) {
-            bookTable.getItems().add(book);
+        for(Book book : author.getListOfBooks()) {
+            tableAuthorView.getItems().add(book);
         }
+
+        authorLabel.setText(author.getName());
+        dateOfBirthLabel.setText(author.getBirthday().toString());
+        numberOfBooksLabel.setText(author.getNumberOfBooks());
+        averageRateLabel.setText(String.valueOf(author.getAvgRate()));
+        //TODO: Set numberOfCommentsLabel
     }
 
     private void tableViewManager() {
-        bookTable.setRowFactory(observable -> {
+        tableAuthorView.setRowFactory(observable -> {
             TableRow<Book> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton()== MouseButton.PRIMARY && event.getClickCount() == 2) {
@@ -75,10 +68,6 @@ public class BooksController implements Initializable {
 
             return row ;
         });
-    }
-
-    protected void initVariables(BorderPane borderPane) {
-        this.borderPane = borderPane;
     }
 
     private void showBookView(Book book) {

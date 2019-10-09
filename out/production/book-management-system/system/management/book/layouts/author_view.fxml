@@ -2,13 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.management.book.controllers.AuthorsController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.management.book.controllers.AuthorViewController">
    <children>
       <ScrollPane prefHeight="400.0" prefWidth="800.0">
          <content>
@@ -105,7 +106,13 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView fx:id="writtenBooksListView" maxWidth="800.0" />
+                  <TableView fx:id="tableAuthorView" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="titleColumn" prefWidth="500.0" text="Title" />
+                      <TableColumn fx:id="releaseColumn" prefWidth="170.0" text="Release" />
+                        <TableColumn fx:id="rateColumn" prefWidth="130.0" text="Rate" />
+                    </columns>
+                  </TableView>
                </children>
                <padding>
                   <Insets left="10.0" />

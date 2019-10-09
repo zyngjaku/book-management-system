@@ -125,7 +125,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="commentTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Type your comment here...">
+                        <TextArea fx:id="commentTextArea" prefHeight="100.0" prefWidth="200.0" promptText="Type your comment here...">
                            <padding>
                               <Insets bottom="3.0" />
                            </padding></TextArea>
@@ -139,9 +139,12 @@
                            </children>
                         </HBox>
                         <ListView fx:id="commentsListView" prefHeight="200.0" prefWidth="200.0">
+                           <cellFactory>
+                           </cellFactory>
                            <VBox.margin>
-                              <Insets top="6.0" />
-                           </VBox.margin></ListView>
+                              <Insets top="3.0" />
+                           </VBox.margin>
+                        </ListView>
                      </children>
                   </VBox>
                </children></VBox>

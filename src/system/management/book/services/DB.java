@@ -246,6 +246,33 @@ public class DB {
         return new Book();
     }
 
+    public LinkedList<Comment> getCommentsForSpecificBook(int id_book) {
+        LinkedList<Comment> listComments = new LinkedList<>();
+
+        try {
+            openConnection();
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT c.date, u.name, u.surname, c.comment, c.rate FROM Books AS b JOIN Comments AS c ON b.id_book=c.id_book JOIN Users AS u ON u.id_user=c.id_user WHERE b.id_book='" + id_book + "';");
+
+            while(rs.next()) {
+                Date date = rs.getDate(1);
+                String name = rs.getString(2);
+                String surname = rs.getString(3);
+                String comment = rs.getString(4);
+                Double rate = rs.getDouble(5);
+
+                listComments.add(new Comment(date, name, surname, comment, rate));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+
+        return listComments;
+    }
+
     private void openConnection(){
         if(conn==null) {
             try {
