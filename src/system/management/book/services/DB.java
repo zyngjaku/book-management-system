@@ -64,19 +64,11 @@ public class DB {
             openConnection();
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT c.id_book, b.title, AVG(c.rate) AS 'average', b.description, b.release_year, b.pages FROM Comments AS c JOIN Books AS b ON c.id_book=b.id_book GROUP BY c.id_book ORDER BY average DESC LIMIT 10;");
+            ResultSet rs = stmt.executeQuery("SELECT c.id_book, AVG(c.rate) AS 'average' FROM Comments AS c JOIN Books AS b ON c.id_book=b.id_book GROUP BY c.id_book ORDER BY average DESC LIMIT 10;");
 
             int lp=1;
             while(rs.next()) {
-                String title = rs.getString(2);
-                double rate = Math.round(rs.getDouble(3) * 100.0) / 100.0;
-                String author = getBookAuthors(rs.getInt(1));
-                String description = rs.getString(4);
-                Date release_year = rs.getDate(5);
-                int pages = rs.getInt(6);
-                String genres = getBookGenres(rs.getInt(1));
-
-                listTop10Books.add(new Book(lp, title, author, rate, description, release_year, pages, genres));
+                listTop10Books.add(getAllInformationAboutSpecificBooks(lp, rs.getInt(1)));
 
                 lp++;
             }
@@ -87,6 +79,54 @@ public class DB {
         closeConnection();
 
         return listTop10Books;
+    }
+
+    public LinkedList<Book> getAuthorBooks(int id_author) {
+        LinkedList<Book> listAuthorBooks = new LinkedList<>();
+
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT id_book FROM Book_authors WHERE id_author=" + id_author + ";");
+
+            int lp=1;
+            while(rs.next()) {
+                int id_book = rs.getInt(1);
+                listAuthorBooks.add(getAllInformationAboutSpecificBooks(lp, id_book));
+
+                lp++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listAuthorBooks;
+    }
+
+    public LinkedList<Author> getAllAutors() {
+        LinkedList<Author> listOfAllAuthors = new LinkedList<>();
+
+        try {
+            openConnection();
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT id_author, name, surname, birthday FROM Authors ORDER BY surname, name;");
+
+            int lp=1;
+            while(rs.next()) {
+                int id_author = rs.getInt(1);
+                String name = rs.getString(3) + " " + rs.getString(2);
+                Date birthday = rs.getDate(4);
+
+                listOfAllAuthors.add(new Author(lp, name, birthday, getAuthorBooks(id_author)));
+                lp++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+
+        return listOfAllAuthors;
     }
 
     public Boolean checkIfLogInIsCorrect(String mail, String password) {
@@ -141,14 +181,11 @@ public class DB {
             openConnection();
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT id_book, title, release_year FROM Books;");
+            ResultSet rs = stmt.executeQuery("SELECT id_book FROM Books ORDER BY title;");
 
             int lp=1;
             while(rs.next()) {
-                String title = rs.getString(2);
-                String author = getBookAuthors(rs.getInt(1));
-                Date release = rs.getDate(3);
-                listBooks.add(new Book(lp, title, author, release));
+                listBooks.add(getAllInformationAboutSpecificBooks(lp, rs.getInt(1)));
 
                 lp++;
             }
@@ -168,14 +205,11 @@ public class DB {
             openConnection();
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT b.id_book, b.title, b.release_year FROM Books AS b JOIN Book_authors AS ba ON b.id_book = ba.id_book JOIN Authors AS a ON ba.id_author = a.id_author WHERE b.title LIKE '%" + phrase + "%' OR a.name LIKE '%" + phrase + "%' OR a.surname LIKE '%" + phrase + "%' GROUP BY b.id_book;");
+            ResultSet rs = stmt.executeQuery("SELECT b.id_book FROM Books AS b JOIN Book_authors AS ba ON b.id_book = ba.id_book JOIN Authors AS a ON ba.id_author = a.id_author WHERE b.title LIKE '%" + phrase + "%' OR a.name LIKE '%" + phrase + "%' OR a.surname LIKE '%" + phrase + "%' GROUP BY b.id_book;");
 
             int lp=1;
             while(rs.next()) {
-                String title = rs.getString(2);
-                String author = getBookAuthors(rs.getInt(1));
-                Date release = rs.getDate(3);
-                listSearchedBooks.add(new Book(lp, title, author, release));
+                listSearchedBooks.add(getAllInformationAboutSpecificBooks(lp, rs.getInt(1)));
 
                 lp++;
             }
@@ -186,6 +220,30 @@ public class DB {
         closeConnection();
 
         return listSearchedBooks;
+    }
+
+    public Book getAllInformationAboutSpecificBooks(int lp, int id_book) {
+        try {
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT b.id_book, b.title, b.description, b.release_year, AVG(c.rate) AS 'average', b.pages as 'average' FROM Books AS b LEFT JOIN Comments AS c ON b.id_book=c.id_book WHERE b.id_book=" + id_book + " GROUP BY c.id_book;");
+
+            while(rs.next()) {
+                String author = getBookAuthors(id_book);
+                String genres = getBookGenres(id_book);
+                String title = rs.getString(2);
+                String description = rs.getString(3);
+                Date release_year = rs.getDate(4);
+                double rate = Math.round(rs.getDouble(5) * 100.0) / 100.0;
+                int pages = rs.getInt(6);
+
+                return new Book(lp, title, author, rate, description, release_year, pages, genres);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return new Book();
     }
 
     private void openConnection(){

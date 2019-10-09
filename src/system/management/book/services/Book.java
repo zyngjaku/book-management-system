@@ -12,6 +12,9 @@ public class Book {
     private int pages;
     private String genres;
 
+    public Book(){
+    }
+
     public Book(int lp, String title, String author){
         this.lp=lp;
         this.title=title;

@@ -35,8 +35,6 @@ public class BookViewController implements Initializable {
         for(int i=1;i<=5;i++) {
             rateChoiceBox.getItems().add(i);
         }
-
-        titleLabel.setText("T");
     }
 
     public void initVariable(Book book) {

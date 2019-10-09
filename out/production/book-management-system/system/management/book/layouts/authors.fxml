@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="400.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.management.book.controllers.AuthorsController">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.management.book.controllers.AuthorsController">
    <children>
-      <Label text="authors" />
+      <TableView fx:id="authorsTable" prefHeight="400.0" prefWidth="800.0">
+         <columns>
+             <TableColumn fx:id="nameColumn" prefWidth="550.0" style="-fx-alignment: CENTER;" text="Name" />
+             <TableColumn fx:id="birthdayColumn" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Birthday" />
+             <TableColumn fx:id="numberOfBooksColumn" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Number of books" />
+         </columns>
+      </TableView>
    </children>
-</GridPane>
+</VBox>
