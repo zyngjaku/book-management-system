@@ -11,11 +11,11 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.management.book.controllers.AuthorViewController">
    <children>
-      <ScrollPane prefHeight="400.0" prefWidth="800.0">
+      <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="330.0" prefWidth="800.0">
          <content>
-            <VBox maxWidth="800.0" prefHeight="400.0" prefWidth="800.0">
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="330.0" prefWidth="800.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="78.0" prefWidth="790.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="220.0">
                            <children>
@@ -52,14 +52,6 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label text="Number of comments:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
                            </children>
                            <HBox.margin>
                               <Insets left="20.0" />
@@ -83,14 +75,6 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="numberOfCommentsLabel" text="numcomm">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
                            </children>
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -106,10 +90,10 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <TableView fx:id="tableAuthorView" prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="tableAuthorView" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="210.0" prefWidth="766.0">
                     <columns>
-                      <TableColumn fx:id="titleColumn" prefWidth="500.0" text="Title" />
-                      <TableColumn fx:id="releaseColumn" prefWidth="170.0" text="Release" />
+                      <TableColumn fx:id="titleColumn" prefWidth="470.0" text="Title" />
+                      <TableColumn fx:id="releaseColumn" prefWidth="164.0" text="Release" />
                         <TableColumn fx:id="rateColumn" prefWidth="130.0" text="Rate" />
                     </columns>
                   </TableView>

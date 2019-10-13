@@ -4,10 +4,10 @@ import java.sql.*;
 import java.util.LinkedList;
 
 public class DB {
-    private String host = "mysql.agh.edu.pl";
-    private String username = "zyngier1";
-    private String password = "4FcqT2V60H3hSVEJ";
-    private String database = "zyngier1";
+    private String host = "localhost";
+    private String username = "root";
+    private String password = "";
+    private String database = "book-management-system";
 
     private Connection conn = null;
 
@@ -15,12 +15,12 @@ public class DB {
 
     }
 
-    public String getBookAuthors(int id_book) {
+    public String getBookAuthors(int idBook) {
         StringBuilder bookAuthorsStringBuilder = new StringBuilder();
 
         try {
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT a.name, a.surname FROM Book_authors AS ba JOIN Authors AS a ON ba.id_author=a.id_author WHERE ba.id_book=" + id_book + ";");
+            ResultSet rs = stmt.executeQuery("SELECT a.name, a.surname FROM Book_authors AS ba JOIN Authors AS a ON ba.id_author=a.id_author WHERE ba.id_book=" + idBook + ";");
 
             while(rs.next()) {
                 bookAuthorsStringBuilder.append(rs.getString(1)).append(" ").append(rs.getString(2));
@@ -36,12 +36,12 @@ public class DB {
         return bookAuthorsStringBuilder.toString();
     }
 
-    public String getBookGenres(int id_book) {
+    public String getBookGenres(int idBook) {
         StringBuilder bookGenresStringBuilder = new StringBuilder();
 
         try {
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT g.genre FROM Book_genres AS bg JOIN Genres AS g ON bg.id_genre=g.id_genre WHERE bg.id_book=" + id_book + ";");
+            ResultSet rs = stmt.executeQuery("SELECT g.genre FROM Book_genres AS bg JOIN Genres AS g ON bg.id_genre=g.id_genre WHERE bg.id_book=" + idBook + ";");
 
             while(rs.next()) {
                 bookGenresStringBuilder.append(rs.getString(1));
@@ -90,8 +90,8 @@ public class DB {
 
             int lp=1;
             while(rs.next()) {
-                int id_book = rs.getInt(1);
-                listAuthorBooks.add(getAllInformationAboutSpecificBooks(lp, id_book));
+                int idBook = rs.getInt(1);
+                listAuthorBooks.add(getAllInformationAboutSpecificBooks(lp, idBook));
 
                 lp++;
             }
@@ -129,7 +129,7 @@ public class DB {
         return listOfAllAuthors;
     }
 
-    public Boolean checkIfLogInIsCorrect(String mail, String password) {
+    public int checkIfLogInIsCorrect(String mail, String password) {
         try {
             openConnection();
 
@@ -138,15 +138,18 @@ public class DB {
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT id_user FROM Users WHERE mail='" + mail + "' AND password='" + passwordEncoded + "';");
+            if(rs.next()){
+               return rs.getInt(1);
+            }
 
-            return rs.next();
+            return -1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         closeConnection();
 
-        return false;
+        return -1;
     }
 
     public boolean checkIfEmailNotExistAndCreateUser(String mail, String password) {
@@ -222,22 +225,22 @@ public class DB {
         return listSearchedBooks;
     }
 
-    public Book getAllInformationAboutSpecificBooks(int lp, int id_book) {
+    public Book getAllInformationAboutSpecificBooks(int lp, int idBook) {
         try {
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT b.id_book, b.title, b.description, b.release_year, AVG(c.rate) AS 'average', b.pages as 'average' FROM Books AS b LEFT JOIN Comments AS c ON b.id_book=c.id_book WHERE b.id_book=" + id_book + " GROUP BY c.id_book;");
+            ResultSet rs = stmt.executeQuery("SELECT b.id_book, b.title, b.description, b.release_year, AVG(c.rate) AS 'average', b.pages as 'average' FROM Books AS b LEFT JOIN Comments AS c ON b.id_book=c.id_book WHERE b.id_book=" + idBook + " GROUP BY c.id_book;");
 
             while(rs.next()) {
-                String author = getBookAuthors(id_book);
-                String genres = getBookGenres(id_book);
+                String author = getBookAuthors(idBook);
+                String genres = getBookGenres(idBook);
                 String title = rs.getString(2);
                 String description = rs.getString(3);
                 Date release_year = rs.getDate(4);
                 double rate = Math.round(rs.getDouble(5) * 100.0) / 100.0;
                 int pages = rs.getInt(6);
 
-                return new Book(lp, title, author, rate, description, release_year, pages, genres);
+                return new Book(lp, idBook, title, author, rate, description, release_year, pages, genres);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -246,14 +249,14 @@ public class DB {
         return new Book();
     }
 
-    public LinkedList<Comment> getCommentsForSpecificBook(int id_book) {
+    public LinkedList<Comment> getCommentsForSpecificBook(int idBook) {
         LinkedList<Comment> listComments = new LinkedList<>();
 
         try {
             openConnection();
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT c.date, u.name, u.surname, c.comment, c.rate FROM Books AS b JOIN Comments AS c ON b.id_book=c.id_book JOIN Users AS u ON u.id_user=c.id_user WHERE b.id_book='" + id_book + "';");
+            ResultSet rs = stmt.executeQuery("SELECT c.date, u.name, u.surname, c.comment, c.rate FROM Books AS b JOIN Comments AS c ON b.id_book=c.id_book JOIN Users AS u ON u.id_user=c.id_user WHERE b.id_book='" + idBook + "' ORDER BY c.date DESC;");
 
             while(rs.next()) {
                 Date date = rs.getDate(1);
@@ -271,6 +274,19 @@ public class DB {
         closeConnection();
 
         return listComments;
+    }
+
+    public void addNewComment(int idBook, int idUser, String comment, int rate, String date) {
+        try {
+            openConnection();
+
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate("INSERT INTO comments (id_comment, id_book, id_user, comment, rate, date) VALUES (NULL, '"+ idBook +"', '"+ idUser +"', '"+ comment +"', '"+ rate +"', '"+ date +"');");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
     }
 
     private void openConnection(){

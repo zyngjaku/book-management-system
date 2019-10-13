@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Book {
     private int lp;
+    private int idBook;
     private String title;
     private String author;
     private String description;
@@ -12,54 +13,34 @@ public class Book {
     private int pages;
     private String genres;
 
-    public Book(){
+    public Book() {
+
     }
 
-    public Book(int lp, String title, String author){
-        this.lp=lp;
+    public Book(int idBook, String title, String author, double rate, String description, Date release, int pages, String genres){
+        this.idBook = idBook;
         this.title=title;
         this.author=author;
-    }
-
-    public Book(int lp, String title, String author, double rate){
-        this(lp, title, author);
-
         this.rate=rate;
-    }
-
-    public Book(int lp, String title, String author, Date release){
-        this(lp, title, author);
-
-        this.release=release;
-    }
-
-    public Book(int lp, String title, String author, String description, Date release){
-        this(lp, title, author, release);
-
         this.description=description;
-    }
-
-    public Book(int lp, String title, String author, String description, Date release, int pages){
-        this(lp, title, author, description, release);
-
+        this.release=release;
         this.pages=pages;
+        this.genres = genres;
     }
 
-    public Book(int lp, String title, String author, double rate, String description, Date release, int pages){
-        this(lp, title, author, description, release, pages);
+    public Book(int lp, int idBook, String title, String author, double rate, String description, Date release, int pages, String genres){
+        this(idBook, title, author, rate, description, release, pages, genres);
 
-        this.rate=rate;
-    }
-
-    public Book(int lp, String title, String author, double rate, String description, Date release, int pages, String genres){
-        this(lp, title, author, rate, description, release, pages);
-
-        this.genres=genres;
+        this.lp = lp;
     }
 
     public int getLp() {
         return lp;
     }
+
+    public int getIdBook() {
+        return idBook;
+}
 
     public String getTitle() {
         return title;
@@ -69,12 +50,12 @@ public class Book {
         return author;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public double getRate() {
         return rate;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public Date getRelease() {

@@ -9,8 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 import javafx.scene.input.MouseEvent;
+import system.management.book.services.UserSession;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -63,25 +66,38 @@ public class MainController implements Initializable {
 
     private void setGUI(String name) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/" + name + ".fxml"));
-            Parent root = (Parent) loader.load();
+            if(name.equals("signup") && signup.getText().equals("LOG OUT")) {
+                login.setVisible(true);
+                signup.setText("SIGN UP");
 
-            switch(name) {
-                case "top10":
-                    Top10Controller top10Controller = loader.getController();
-                    top10Controller.initVariables(borderPane);
-                    break;
-                case "books":
-                    BooksController booksController = loader.getController();
-                    booksController.initVariables(borderPane);
-                    break;
-                case "authors":
-                    AuthorsController authorsController = loader.getController();
-                    authorsController.initVariables(borderPane);
-                    break;
+                UserSession.logOutUser();
+
+                setGUI("top10");
             }
+            else {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/" + name + ".fxml"));
+                Parent root = (Parent) loader.load();
 
-            borderPane.setBottom(root);
+                switch (name) {
+                    case "top10":
+                        Top10Controller top10Controller = loader.getController();
+                        top10Controller.initVariables(borderPane);
+                        break;
+                    case "books":
+                        BooksController booksController = loader.getController();
+                        booksController.initVariables(borderPane);
+                        break;
+                    case "authors":
+                        AuthorsController authorsController = loader.getController();
+                        authorsController.initVariables(borderPane);
+                        break;
+                    case "login":
+                        LogInController logInController = loader.getController();
+                        logInController.initVariables(borderPane, login, signup);
+                }
+
+                borderPane.setBottom(root);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

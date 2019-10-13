@@ -108,7 +108,7 @@
                               <Insets right="17.0" top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="descriptionLabel" alignment="TOP_LEFT" maxWidth="660.0" text="Kubus Puchatek i jego przygody" textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
+                        <Label fx:id="descriptionLabel" alignment="TOP_LEFT" maxWidth="660.0" text="Here it should be beautiful description of your book :)" textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
                            <HBox.margin>
                               <Insets top="7.0" />
                            </HBox.margin>
@@ -117,7 +117,7 @@
                   </HBox>
                   <VBox maxWidth="765.0" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label text="Comments: ">
+                        <Label fx:id="commentsLabel" text="Comments: ">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
@@ -132,13 +132,13 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ChoiceBox fx:id="rateChoiceBox" prefWidth="40.0" />
-                              <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedAddComment" text="Add comment">
+                              <Button fx:id="addCommentButton" mnemonicParsing="false" onMouseClicked="#onMouseClickedAddComment" text="Add comment">
                                  <HBox.margin>
                                     <Insets left="3.0" />
                                  </HBox.margin></Button>
                            </children>
                         </HBox>
-                        <ListView fx:id="commentsListView" prefHeight="200.0" prefWidth="200.0">
+                        <ListView fx:id="commentsListView" prefHeight="200.0" prefWidth="765.0">
                            <cellFactory>
                            </cellFactory>
                            <VBox.margin>
