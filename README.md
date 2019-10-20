@@ -1,5 +1,4 @@
-# book-management-system
-This project is a system in which you can view books, search by phrase, add and see comments and grades.
+# Book Management System
 
 ## About project
 **Technologies used:**
@@ -15,7 +14,7 @@ This project is a system in which you can view books, search by phrase, add and 
 * see top 10 books by rates
 <!--- **ScreenShoot from web application**
 ![Application screen](https://github.com/zyngjaku/agh-discrete-simulation-of-complex-systems/blob/master/img/screen.png) --->
-## Author
+## Authors
 **Jakub Zyngier** and **Anna Jurys** who are students at the AGH University of Science and Technology in Cracow.
 
 ## License
